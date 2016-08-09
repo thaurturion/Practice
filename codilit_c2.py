@@ -1,10 +1,11 @@
 import timeit
 import random
 import time
-
+import array
+import numpy as np
 
 def solution_fabi(my_fun):
-    c = 0
+    #c = 0
     tmp = my_fun[0]
 
     i = len(my_fun) - 1
@@ -14,7 +15,7 @@ def solution_fabi(my_fun):
     while i > 1:
         my_fun[i] = my_fun[i-1]
         i -= 1
-        c += 2
+        #c += 2
     my_fun[1] = tmp 
 
     #print(c)
@@ -48,8 +49,11 @@ def main():
     N = 5000000
 
     start = time.time()
-    arr = [random.randint(0,1) for i in range(N)]
-    arrB = arr.copy()
+    #arr = np.array([random.randint(0,1) for i in range(N)], dtype="int")
+    arr = np.random.randint(2, size=N)
+    #arr = array.array('i',(random.randint(0,1) for i in range(0,N))) #[random.randint(0,1) for i in range(N)]
+    #arrB = copy.copy(arr)
+    arrB = np.copy(arr)
 
     print(time.time()- start)
     print("Finished init")
